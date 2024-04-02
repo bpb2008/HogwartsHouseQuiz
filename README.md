@@ -1,8 +1,3 @@
-# React + Vite
+# Which Hogwarts House Do You Belong To?
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Testing out a simple quiz app using React and Vite. I'm borrowing some of the questions and answers from this [BuzzFeed Quiz](https://www.buzzfeed.com/eleanorbate/accurate-af-sorting-quiz). Trying to practice the logic here, not really be creative with the questions and answers! 

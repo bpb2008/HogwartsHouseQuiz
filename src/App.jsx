@@ -1,35 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import { useState } from "react";
+import Question from "./components/Question";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [start, setStart] = useState(false);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [results, setResults] = useState();
+
+  const clickToStart = () => {
+    setStart(true);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Container
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Typography
+          variant="h3"
+          sx={{ marginTop: "20px", marginBottom: "20px" }}
+        >
+          What is your Hogwarts House?
+        </Typography>
+        {start ? (
+          <Question
+            currentQuestion={currentQuestion}
+            setCurrentQuestion={setCurrentQuestion}
+            results={results}
+            setResults={setResults}
+          />
+        ) : (
+          <Button variant="contained" onClick={clickToStart}>
+            Start Quiz!
+          </Button>
+        )}
+      </Box>
+    </Container>
+  );
+};
 
-export default App
+export default App;
