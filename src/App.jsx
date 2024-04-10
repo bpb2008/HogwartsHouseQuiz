@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 import Question from "./components/Question";
 import { quiz } from "./quiz";
+import { calculateResult, HOUSES } from "./calculateResult";
 import "./App.css";
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [results, setResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
+  const [house, setHouse] = useState("");
 
   const clickToStart = () => {
     setStart(true);
@@ -23,30 +25,13 @@ const App = () => {
     setShowResults(false);
   };
 
-  const calculateResult = () => {
-    const numOfInstances = results.reduce((accumulated, nextArrayElement) => {
-      if (nextArrayElement in accumulated) {
-        accumulated[nextArrayElement]++;
-        return accumulated;
-      }
-
-      return {
-        ...accumulated,
-        [nextArrayElement]: 1,
-      };
-    }, {});
-
-    const house = numOfInstances;
-
-    if ((house = 1)) {
-    }
-  };
-
   const showResult = () => {
     setShowResults(true);
+    const houseIndex = calculateResult(results);
+    setHouse(HOUSES[houseIndex]);
   };
 
-  const handleResult = (getResult) => {
+  const handleNextQuestion = (getResult) => {
     setResults((prevResult) => [...prevResult, getResult]);
   };
 
@@ -79,12 +64,12 @@ const App = () => {
             currentQuestion={currentQuestion}
             setCurrentQuestion={setCurrentQuestion}
             results={results}
-            handleResult={handleResult}
+            handleNextQuestion={handleNextQuestion}
           />
         ) : showResults ? (
           <Box>
             <Typography variant="h4">
-              Your Hogwarts House is: {calculateResult()}
+              Your Hogwarts House is: {house}
             </Typography>
             <Button variant="contained" onClick={handleRestart}>
               Restart Quiz
