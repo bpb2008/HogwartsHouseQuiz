@@ -20,7 +20,6 @@ const App = () => {
   };
 
   const handleRestart = () => {
-    console.log("😡", currentQuestion);
     setResults([]);
     setShowResults(false);
   };
@@ -34,8 +33,6 @@ const App = () => {
   const handleNextQuestion = (getResult) => {
     setResults((prevResult) => [...prevResult, getResult]);
   };
-
-  console.log(currentQuestion);
 
   return (
     <Container

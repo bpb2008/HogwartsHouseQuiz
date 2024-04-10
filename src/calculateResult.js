@@ -18,8 +18,6 @@ export const calculateResult = (results) => {
     };
   }, {});
 
-  console.log(numOfInstances);
-
   let arrHighestCount = 0;
 
   Object.entries(numOfInstances).forEach((nextKeyValuePair, index) => {
