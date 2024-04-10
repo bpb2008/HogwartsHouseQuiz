@@ -18,18 +18,36 @@ const App = () => {
   };
 
   const handleRestart = () => {
-    setCurrentQuestion(0);
+    console.log("😡", currentQuestion);
     setResults([]);
     setShowResults(false);
   };
 
   const calculateResult = () => {
-    const total = results.reduce((acc, value) => acc + value, 0);
-    return total;
+    const numOfInstances = results.reduce((accumulated, nextArrayElement) => {
+      if (nextArrayElement in accumulated) {
+        accumulated[nextArrayElement]++;
+        return accumulated;
+      }
+
+      return {
+        ...accumulated,
+        [nextArrayElement]: 1,
+      };
+    }, {});
+
+    const house = numOfInstances;
+
+    if ((house = 1)) {
+    }
   };
 
   const showResult = () => {
     setShowResults(true);
+  };
+
+  const handleResult = (getResult) => {
+    setResults((prevResult) => [...prevResult, getResult]);
   };
 
   console.log(currentQuestion);
@@ -61,14 +79,14 @@ const App = () => {
             currentQuestion={currentQuestion}
             setCurrentQuestion={setCurrentQuestion}
             results={results}
-            setResults={setResults}
+            handleResult={handleResult}
           />
         ) : showResults ? (
           <Box>
             <Typography variant="h4">
               Your Hogwarts House is: {calculateResult()}
             </Typography>
-            <Button variant="contained" onClick={handleRestart()}>
+            <Button variant="contained" onClick={handleRestart}>
               Restart Quiz
             </Button>
           </Box>

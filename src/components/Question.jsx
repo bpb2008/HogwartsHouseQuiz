@@ -8,14 +8,14 @@ const Question = ({
   currentQuestion,
   setCurrentQuestion,
   results,
-  setResults,
+  handleResult,
 }) => {
   const { questions } = quiz;
   const { question, choices, answerValues } = questions[currentQuestion];
 
   const handleAnswerClick = (answerValue) => {
     const result = answerValues.indexOf(answerValue) + 1;
-    setResults(result);
+    handleResult(result);
 
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
