@@ -1,4 +1,4 @@
-export const HOUSES = {
+const HOUSES = {
   1: "Gryffindor",
   2: "Ravenclaw",
   3: "Slytherin",
@@ -28,5 +28,5 @@ export const calculateResult = (results) => {
     }
   });
 
-  return arrHighestCount;
+  return HOUSES[arrHighestCount];
 };

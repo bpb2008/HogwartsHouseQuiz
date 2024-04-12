@@ -29,6 +29,7 @@ const Question = ({
         <Typography>{question}</Typography>
         {choices.map((choice, index) => (
           <Button
+            key={index}
             variant="contained"
             onClick={() => handleAnswerClick(index + 1)}
             sx={{ marginTop: "10px" }}

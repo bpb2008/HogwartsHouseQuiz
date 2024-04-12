@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 import Question from "./components/Question";
 import { quiz } from "./quiz";
-import { calculateResult, HOUSES } from "./calculateResult";
+import { calculateResult } from "./calculateResult";
 import "./App.css";
 
 const App = () => {
@@ -26,8 +26,8 @@ const App = () => {
 
   const showResult = () => {
     setShowResults(true);
-    const houseIndex = calculateResult(results);
-    setHouse(HOUSES[houseIndex]);
+    const house = calculateResult(results);
+    setHouse(house);
   };
 
   const handleNextQuestion = (getResult) => {
