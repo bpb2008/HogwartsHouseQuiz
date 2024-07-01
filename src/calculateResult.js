@@ -9,24 +9,22 @@ export const calculateResult = (results) => {
   const numOfInstances = results.reduce((accumulated, nextArrayElement) => {
     if (nextArrayElement in accumulated) {
       accumulated[nextArrayElement]++;
-      return accumulated;
+    } else {
+      accumulated[nextArrayElement] = 1;
     }
-
-    return {
-      ...accumulated,
-      [nextArrayElement]: 1,
-    };
+    return accumulated;
   }, {});
 
-  let arrHighestCount = 0;
-
-  Object.entries(numOfInstances).forEach((nextKeyValuePair, index) => {
-    if (index === 0) {
-      arrHighestCount = nextKeyValuePair[0];
-    } else if (nextKeyValuePair[1] > numOfInstances[arrHighestCount]) {
-      arrHighestCount = nextKeyValuePair[0];
-    }
-  });
+  const arrHighestCount = Object.entries(numOfInstances).reduce(
+    (highest, nextKeyValuePair) => {
+      const [key, value] = nextKeyValuePair;
+      if (value > highest[1]) {
+        return nextKeyValuePair;
+      }
+      return highest;
+    },
+    [null, 0]
+  )[0];
 
   return HOUSES[arrHighestCount];
 };
